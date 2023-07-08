@@ -1,0 +1,22 @@
+import re
+from collections import Counter
+
+def count_word_frequency(file_path):
+    word_freq = Counter()
+
+    with open(file_path, 'r') as file:
+        text = file.read()
+        words = re.findall(r'\w+', text.lower())
+        word_freq.update(words)
+
+    return word_freq
+
+# Задайте путь к текстовому файлу для анализа
+file_path = 'path/to/your/file.txt'
+
+# Вызовите функцию count_word_frequency и получите частоту встречаемости слов
+word_frequency = count_word_frequency(file_path)
+
+# Выведите результаты
+for word, frequency in word_frequency.items():
+    print(f"Слово '{word}' встречается {frequency} раз(a).")
